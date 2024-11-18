@@ -18,6 +18,12 @@ var y = 1;
 var speed = 25;
 var direction = 'right';
 
+// when a box moves
+// know if they are touching
+// if they are touching, then show the explode gif and hide the blocks.
+
+
+
 
 
 function moveDiv (){
@@ -49,25 +55,25 @@ function moveDiv (){
 function goRight(){
     x = x + speed;
     mydiv.style.left = x;
-
+    playerMoved();
 }
 
 function goDown(){
   
     y = y + speed;
     mydiv.style.top = y;
-}
+    playerMoved();}
 
 function goUp(){
   
     y = y - speed;
     mydiv.style.top = y;
-}
+    playerMoved();}
 
 function goleft(){
     x = x - speed;
     mydiv.style.left = x;
-}
+    playerMoved();}
 
 
 
@@ -80,7 +86,7 @@ mydiv.onmouseover=moveDiv;
 
 function logIt(){
     console.log(1);
- 
+;
 }
 
 logIt();
@@ -105,24 +111,27 @@ setInterval(logIt,1000)
 function goRight2(){
     x2= x2+ speed;
     player_2.style.left = x2;
-
+    playerMoved();
 }
 
 function goDown2(){
   
     y2 = y2 + speed;
     player_2.style.top = y2;
-}
+
+    playerMoved();  }
 
 function goUp2(){
   
     y2 = y2 - speed;
     player_2.style.top = y2;
+    playerMoved();
 }
 
 function goleft2(){
     x2 = x2 - speed;
     player_2.style.left = x2;
+    playerMoved();
 }
 
 
@@ -132,7 +141,39 @@ function goleft2(){
 
 
 
+function playerMoved(){
+  console.log('it moved');
+  if(playersAreTouching())
+{
+  // show picture
 
+  alert("boom");
+}
+
+}
+
+function playersAreTouching(){
+
+  var x_ = x + 40;
+  var y_ = y + 40;
+  console.log(`x: ${x}. x_: ${x_}. y: ${y}. y_: ${y_}`)
+
+  var x2_ = x2 + 40;
+  var y2_ = y2 + 40;
+  console.log(`x2: ${x2}. x2_: ${x2_}. y2: ${y2}. y2_: ${y2_}`)
+
+ if(x2 >= x && x2 <= x_
+    && y2 >= y && y2 <= y_)
+{
+  console.log("TOUCH!!!");
+  return true;
+ }
+ else{return false;}
+
+
+
+
+}
 
 
 
