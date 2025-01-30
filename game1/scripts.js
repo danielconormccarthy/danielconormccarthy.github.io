@@ -106,15 +106,37 @@ setInterval(logIt,1000)
   var direction2 = 'right';
   
 
+function isOffScreen(x, y){
+  
+  if(x < 0 || y < 0){
+return true;
+  }
 
+  return false;
+
+}
 
 function goRight2(){
+
+  // check if new position is off screen
+  // if not, continue
+
+if(isOffScreen(x2 + speed, y2))
+{
+  return;
+}
+
     x2= x2+ speed;
     player_2.style.left = x2;
     playerMoved();
 }
 
 function goDown2(){
+
+  if(isOffScreen(x2, y2  + speed))
+    {
+      return;
+    }
   
     y2 = y2 + speed;
     player_2.style.top = y2;
@@ -122,6 +144,11 @@ function goDown2(){
     playerMoved();  }
 
 function goUp2(){
+
+  if(isOffScreen(x2, y2 - speed))
+    {
+      return;
+    }
   
     y2 = y2 - speed;
     player_2.style.top = y2;
@@ -129,6 +156,11 @@ function goUp2(){
 }
 
 function goleft2(){
+
+  if(isOffScreen(x2 - speed, y2))
+    {
+      return;
+    }
     x2 = x2 - speed;
     player_2.style.left = x2;
     playerMoved();
@@ -174,15 +206,6 @@ function playersAreTouching(){
 
 
 }
-
-
-
-
-
-
-
-
-
 
 
 
